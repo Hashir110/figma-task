@@ -4,6 +4,7 @@ import "boxicons";
 import { useNavigate } from "react-router-dom";
 import * as yup from "yup";
 import { Alert } from "@mui/material";
+import WavingHandIcon from "@mui/icons-material/WavingHand";
 const SignIn = () => {
   const [fullname, setFullName] = useState("");
   const [role, setRole] = useState("");
@@ -165,7 +166,7 @@ const SignIn = () => {
           <img src={logo} alt="Logo" className="mx-auto" />
         </a>
         <h2 className="text-gray-800 text-2xl font-semibold mb-6">
-          Welcome to Taska!
+          Welcome to Taska <WavingHandIcon className="text-yellow-300" />
         </h2>
 
         {alertMessage && (

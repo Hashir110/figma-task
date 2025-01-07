@@ -4,6 +4,7 @@ import logo from "../assets/Logo.svg";
 import * as yup from "yup";
 import "boxicons";
 import { Alert } from "@mui/material";
+import WavingHandIcon from "@mui/icons-material/WavingHand";
 
 const SignUp = () => {
   const [email, setEmail] = useState("");
@@ -106,7 +107,7 @@ const SignUp = () => {
         </a>
 
         <h2 className="text-gray-800 text-2xl font-semibold mb-6">
-          Welcome to Taska!
+          Welcome to Taska <WavingHandIcon className="text-yellow-300"/>
         </h2>
 
         {/* Alert Message */}
