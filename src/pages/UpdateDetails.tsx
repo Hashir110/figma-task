@@ -19,13 +19,12 @@ const UpdateDetails = () => {
 
       {/* header */}
       <div
-        className="bg-gray-50 smoothly-transparent scroll-smooth"
         style={{
           width: "100vw",
           height: "100vh",
           margin: "0 auto",
-          scrollbarWidth: "none",
         }}
+        className="bg-gray-50 "
       >
         <Header
           sidebarHidden={sidebarHidden}

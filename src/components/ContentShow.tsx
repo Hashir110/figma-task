@@ -9,8 +9,9 @@ import FlagIcon from "@mui/icons-material/Flag";
 import EditIcon from "@mui/icons-material/Edit";
 
 import { useNavigate } from "react-router-dom";
+import { Button } from "@mui/material";
 
-const ContentShow = () => {
+const ContentShow = ({ btnTitle = "Create New Task" }) => {
   const [tasks, setTasks] = useState([]);
 
   useEffect(() => {
@@ -31,9 +32,18 @@ const ContentShow = () => {
   };
 
   return (
-    <div className="p-4">
+    <div className="flex flex-col items-center m-10 gap-4 md:m-10">
+      <div className="flex justify-end w-full relative">
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={() => navigate("/createDetails")}
+        >
+          {btnTitle}
+        </Button>
+      </div>
       {/* Table */}
-      <div className="bg-white border border-gray-200 rounded-md mt-6 overflow-x-auto">
+      <div className="w-full overflow-x-auto border rounded-lg mt-10 gap-4 grid grid-cols-1 ">
         <TableContainer component="table">
           <TableHead>
             <TableRow>

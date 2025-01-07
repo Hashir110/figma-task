@@ -5,15 +5,7 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
-import {
-  TextField,
-  Button,
-  ListItem,
-  Dialog,
-  DialogContent,
-  DialogActions,
-  DialogTitle,
-} from "@mui/material";
+import { TextField, Button, ListItem } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { Alert } from "@mui/material";
 import InputAdornment from "@mui/material/InputAdornment";
@@ -31,7 +23,6 @@ const Content = ({ btnTitle }) => {
   const [des, setDes] = useState("");
   const [errors, setErrors] = useState({});
   const [alertMessage, setAlertMessage] = useState(null);
-  const [open, setOpen] = useState(false);
 
   const navigate = useNavigate();
   const handlePriority = (event: SelectChangeEvent) => {
@@ -59,15 +50,15 @@ const Content = ({ btnTitle }) => {
       localStorage.setItem("tasks", JSON.stringify(tasks));
 
       setAlertMessage({ type: "success", text: "Task created successfully!" });
-      setOpen(true);
+
       setTitle("");
       setDate("");
+      setStartDate(null);
       setPriority("");
       setAssign("");
       setStatus("");
       setDes("");
       setTimeout(() => {
-        setOpen(false);
         navigate("/showDetails");
       }, 2000);
     } catch (err) {
@@ -122,7 +113,6 @@ const Content = ({ btnTitle }) => {
 
         {/* Form Fields */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 mt-4 p-4">
-          {/* Title Field */}
           <div>
             <ListItem>
               <TextField
@@ -142,7 +132,6 @@ const Content = ({ btnTitle }) => {
               />
             </ListItem>
           </div>
-          {/* Due Date Field */}
 
           <div>
             <ListItem>
@@ -167,7 +156,6 @@ const Content = ({ btnTitle }) => {
               />
             </ListItem>
 
-            {/* Calendar */}
             {showCalendar && (
               <div className="absolute mt-2 z-10">
                 <DatePicker
@@ -188,7 +176,6 @@ const Content = ({ btnTitle }) => {
             )}
           </div>
 
-          {/* Priority Field */}
           <div>
             <ListItem>
               <FormControl
@@ -211,7 +198,7 @@ const Content = ({ btnTitle }) => {
               </FormControl>
             </ListItem>
           </div>
-          {/* Status Field */}
+
           <div>
             <ListItem>
               <TextField
@@ -227,7 +214,7 @@ const Content = ({ btnTitle }) => {
               />
             </ListItem>
           </div>
-          {/* Assignee Field */}
+
           <div>
             <ListItem>
               <FormControl
@@ -253,7 +240,7 @@ const Content = ({ btnTitle }) => {
               </FormControl>
             </ListItem>
           </div>
-          {/* Description Field */}
+
           <div>
             <ListItem>
               <TextField
@@ -290,21 +277,6 @@ const Content = ({ btnTitle }) => {
             {btnTitle}
           </Button>
         </div>
-        <Dialog open={open} onClose={() => setOpen(false)}>
-          <DialogTitle>Create Task Successful</DialogTitle>
-          <DialogContent>
-            <p>You have created a task successfully!</p>
-          </DialogContent>
-          <DialogActions>
-            <Button
-              onClick={() => setOpen(false)}
-              color="primary"
-              variant="contained"
-            >
-              Close
-            </Button>
-          </DialogActions>
-        </Dialog>
       </body>
     </div>
   );

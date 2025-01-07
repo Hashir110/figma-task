@@ -3,15 +3,7 @@ import logo from "../assets/Logo.svg";
 import "boxicons";
 import { useNavigate } from "react-router-dom";
 import * as yup from "yup";
-import {
-  Alert,
-  AlertTitle,
-  Button,
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogTitle,
-} from "@mui/material";
+import { Alert } from "@mui/material";
 const SignIn = () => {
   const [fullname, setFullName] = useState("");
   const [role, setRole] = useState("");
@@ -21,7 +13,7 @@ const SignIn = () => {
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [errors, setErrors] = useState({});
   const [alertMessage, setAlertMessage] = useState(null);
-  const [open, setOpen] = useState(false);
+
   const [touched, setTouched] = useState({
     email: false,
     password: false,
@@ -72,13 +64,16 @@ const SignIn = () => {
       localStorage.setItem("email", email);
       localStorage.setItem("password", password);
 
-      setOpen(true);
+      setAlertMessage({ type: "success", text: "Signup successful!" });
+
       setEmail("");
       setPassword("");
       setFullName("");
       setRole("");
-      setOpen(false);
-      setTimeout(() => navigate("/"), 2000);
+
+      setTimeout(() => {
+        navigate("/");
+      }, 2000);
     } catch (err) {
       if (err instanceof yup.ValidationError) {
         const errorObj = {};
@@ -289,22 +284,6 @@ const SignIn = () => {
           </a>
         </p>
       </div>
-
-      <Dialog open={open} onClose={() => setOpen(false)}>
-        <DialogTitle>Signup Successful</DialogTitle>
-        <DialogContent>
-          <p>You have signed up successfully!</p>
-        </DialogContent>
-        <DialogActions>
-          <Button
-            onClick={() => setOpen(false)}
-            color="primary"
-            variant="contained"
-          >
-            Close
-          </Button>
-        </DialogActions>
-      </Dialog>
     </div>
   );
 };

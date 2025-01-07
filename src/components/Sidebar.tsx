@@ -7,11 +7,13 @@ import "aos/dist/aos.css";
 const Sidebar = () => {
   useEffect(() => {
     AOS.init();
+    AOS.refresh();
   }, []);
   return (
     <div
       data-aos="fade-right"
-      data-aos-offset="100"
+      data-aos-duration="1000"
+      data-aos-delay="100"
       data-aos-easing="ease-in-sine"
     >
       <div className="bg-white drop-shadow-md px-4 sm:px-6 py-5 w-full sm:w-64 lg:w-72 h-screen max-h-screen">

@@ -3,14 +3,7 @@ import { useNavigate } from "react-router-dom";
 import logo from "../assets/Logo.svg";
 import * as yup from "yup";
 import "boxicons";
-import {
-  Alert,
-  Dialog,
-  DialogTitle,
-  DialogContent,
-  DialogActions,
-  Button,
-} from "@mui/material";
+import { Alert } from "@mui/material";
 
 const SignUp = () => {
   const [email, setEmail] = useState("");
@@ -19,7 +12,6 @@ const SignUp = () => {
   const [touched, setTouched] = useState({ email: false, password: false });
   const [errors, setErrors] = useState({});
   const [alertMessage, setAlertMessage] = useState(null);
-  const [open, setOpen] = useState(false); // State to manage popup
 
   const navigate = useNavigate();
 
@@ -42,10 +34,7 @@ const SignUp = () => {
         setEmail("");
         setPassword("");
 
-        setOpen(true);
-
         setTimeout(() => {
-          setOpen(false);
           navigate("/CreateDetails");
         }, 2000);
       } else {
@@ -187,23 +176,6 @@ const SignUp = () => {
           </a>
         </p>
       </div>
-
-      {/* Popup Dialog */}
-      <Dialog open={open} onClose={() => setOpen(false)}>
-        <DialogTitle>Login Successful</DialogTitle>
-        <DialogContent>
-          <p>You have successfully logged in!</p>
-        </DialogContent>
-        <DialogActions>
-          <Button
-            onClick={() => setOpen(false)}
-            color="primary"
-            variant="contained"
-          >
-            Close
-          </Button>
-        </DialogActions>
-      </Dialog>
     </div>
   );
 };

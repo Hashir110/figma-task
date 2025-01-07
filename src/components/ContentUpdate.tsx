@@ -1,10 +1,6 @@
 import {
   Alert,
   Button,
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogTitle,
   FormControl,
   InputAdornment,
   InputLabel,
@@ -24,7 +20,6 @@ const ContentUpdate = ({ btnTitle = "Update Task" }) => {
   const navigate = useNavigate();
 
   const { task, index } = location.state || {};
-
   const [title, setTitle] = useState(task?.title || "");
   const [startDate, setStartDate] = useState(
     task?.date ? new Date(task.date) : null
@@ -35,7 +30,6 @@ const ContentUpdate = ({ btnTitle = "Update Task" }) => {
   const [des, setDes] = useState(task?.des || "");
   const [errors, setErrors] = useState({});
   const [alertMessage, setAlertMessage] = useState(null);
-  const [open, setOpen] = useState(false);
   const [showCalendar, setShowCalendar] = useState(false);
 
   const validationSchema = yup.object().shape({
@@ -56,11 +50,13 @@ const ContentUpdate = ({ btnTitle = "Update Task" }) => {
         { abortEarly: false }
       );
 
+      const formattedDate = startDate.toISOString().split("T")[0];
+
       const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
       if (index !== undefined) {
         tasks[index] = {
           title,
-          date: startDate ? startDate.toISOString() : "",
+          date: formattedDate,
           priority,
           assign,
           status,
@@ -70,7 +66,6 @@ const ContentUpdate = ({ btnTitle = "Update Task" }) => {
       }
 
       setAlertMessage({ type: "success", text: "Task updated successfully!" });
-      setOpen(true);
 
       setTitle("");
       setStartDate(null);
@@ -78,8 +73,8 @@ const ContentUpdate = ({ btnTitle = "Update Task" }) => {
       setAssign("");
       setStatus("");
       setDes("");
+
       setTimeout(() => {
-        setOpen(false);
         navigate("/showDetails");
       }, 2000);
     } catch (err) {
@@ -96,10 +91,7 @@ const ContentUpdate = ({ btnTitle = "Update Task" }) => {
   };
 
   return (
-    <div
-      id="content"
-      className="bg-white border border-gray-200 rounded-md m-4 md:m-10"
-    >
+    <div className="bg-white border border-gray-200 rounded-md m-4 md:m-10">
       <div className="p-4">
         {/* Alert Message */}
         {alertMessage && (
@@ -110,7 +102,6 @@ const ContentUpdate = ({ btnTitle = "Update Task" }) => {
 
         {/* Form Fields */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
-          {/* Title Field */}
           <TextField
             className="w-full"
             label="Title"
@@ -121,7 +112,6 @@ const ContentUpdate = ({ btnTitle = "Update Task" }) => {
             helperText={errors.title}
           />
 
-          {/* Due Date Field */}
           <div className="relative w-full">
             <TextField
               className="w-full"
@@ -155,7 +145,6 @@ const ContentUpdate = ({ btnTitle = "Update Task" }) => {
             )}
           </div>
 
-          {/* Priority Field */}
           <FormControl
             className="w-full"
             variant="outlined"
@@ -173,7 +162,6 @@ const ContentUpdate = ({ btnTitle = "Update Task" }) => {
             </Select>
           </FormControl>
 
-          {/* Status Field */}
           <TextField
             className="w-full"
             label="Status"
@@ -184,7 +172,6 @@ const ContentUpdate = ({ btnTitle = "Update Task" }) => {
             helperText={errors.status}
           />
 
-          {/* Assignee Field */}
           <FormControl
             className="w-full"
             variant="outlined"
@@ -205,7 +192,6 @@ const ContentUpdate = ({ btnTitle = "Update Task" }) => {
             </Select>
           </FormControl>
 
-          {/* Description Field */}
           <TextField
             className="w-full"
             label="Description"
@@ -218,7 +204,6 @@ const ContentUpdate = ({ btnTitle = "Update Task" }) => {
           />
         </div>
 
-        {/* Update Task Button */}
         <div className="flex justify-end mt-6">
           <Button
             variant="contained"
@@ -229,23 +214,6 @@ const ContentUpdate = ({ btnTitle = "Update Task" }) => {
           </Button>
         </div>
       </div>
-
-      {/* Success Dialog */}
-      <Dialog open={open} onClose={() => setOpen(false)}>
-        <DialogTitle>Task Updated Successfully</DialogTitle>
-        <DialogContent>
-          <p>You have successfully updated the task!</p>
-        </DialogContent>
-        <DialogActions>
-          <Button
-            onClick={() => setOpen(false)}
-            color="primary"
-            variant="contained"
-          >
-            Close
-          </Button>
-        </DialogActions>
-      </Dialog>
     </div>
   );
 };

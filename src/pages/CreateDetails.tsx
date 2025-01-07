@@ -27,7 +27,7 @@ export const CreateDetails = () => {
           height: "100vh",
           margin: "0 auto",
         }}
-        
+        className="bg-gray-50 "
       >
         <Header
           sidebarHidden={sidebarHidden}

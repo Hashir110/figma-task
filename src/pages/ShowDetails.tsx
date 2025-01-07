@@ -26,17 +26,16 @@ const ShowDetails = ({ title }: headerTypes) => {
           width: "100vw",
           height: "100vh",
           margin: "0 auto",
-          scrollbarWidth: "none",
         }}
-        className="bg-gray-50 smoothly-transparent scroll-smooth"
+        className="bg-gray-50"
       >
         <Header
           sidebarHidden={sidebarHidden}
           setSidebarHidden={setSidebarHidden}
           title={"Task"}
         />
-
-        <ContentShow />
+        {/* content */}
+        <ContentShow btnTitle="Create New Task" />
       </div>
     </div>
   );
