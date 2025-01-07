@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import "boxicons";
 
@@ -7,6 +7,8 @@ import Content from "../components/Content";
 import Sidebar from "../components/Sidebar";
 
 export const CreateDetails = () => {
+  const [sidebarHidden, setSidebarHidden] = useState(false);
+
   return (
     <div
       style={{
@@ -16,19 +18,22 @@ export const CreateDetails = () => {
     >
       {/* sidebar */}
 
-      <Sidebar />
+      {sidebarHidden === false && <Sidebar />}
 
       {/* header */}
       <div
-        className="bg-gray-50 "
         style={{
           width: "100vw",
           height: "100vh",
           margin: "0 auto",
-          scrollbarWidth: "none",
         }}
+        
       >
-        <Header title={"Create New Task"} />
+        <Header
+          sidebarHidden={sidebarHidden}
+          setSidebarHidden={setSidebarHidden}
+          title={"Create New Task"}
+        />
 
         {/* content */}
         <Content btnTitle={"Create Task"} />

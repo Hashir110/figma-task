@@ -3,17 +3,15 @@ import { useNavigate } from "react-router-dom";
 
 interface headerTypes {
   title: string;
+  sidebarHidden?: boolean;
+  setSidebarHidden?: any;
 }
 
-const Header = ({ title }: headerTypes) => {
+const Header = ({ title, setSidebarHidden, sidebarHidden }: headerTypes) => {
   const navigate = useNavigate();
 
   const handleMenuClick = () => {
-    const sidebar = document.getElementById("sidebar");
-
-    if (sidebar !== null) {
-      sidebar.classList.toggle("hidden");
-    }
+    setSidebarHidden(!sidebarHidden);
   };
 
   return (

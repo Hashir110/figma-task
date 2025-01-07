@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import Sidebar from "../components/Sidebar";
 import Header from "../components/Header";
 
 import ContentUpdate from "../components/ContentUpdate";
 
 const UpdateDetails = () => {
+  const [sidebarHidden, setSidebarHidden] = useState(false);
   return (
     <div
       style={{
@@ -14,11 +15,11 @@ const UpdateDetails = () => {
     >
       {/* sidebar */}
 
-      <Sidebar />
+      {sidebarHidden === false && <Sidebar />}
 
       {/* header */}
       <div
-        className="bg-gray-50"
+        className="bg-gray-50 smoothly-transparent scroll-smooth"
         style={{
           width: "100vw",
           height: "100vh",
@@ -26,7 +27,11 @@ const UpdateDetails = () => {
           scrollbarWidth: "none",
         }}
       >
-        <Header title={"Update Task"} />
+        <Header
+          sidebarHidden={sidebarHidden}
+          setSidebarHidden={setSidebarHidden}
+          title={"Update Task"}
+        />
 
         {/* content update */}
         <ContentUpdate btnTitle="Update Task" />

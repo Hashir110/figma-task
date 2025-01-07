@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Sidebar from "../components/Sidebar";
 import Header from "../components/Header";
 
@@ -6,9 +6,9 @@ import ContentShow from "../components/ContentShow";
 
 interface headerTypes {
   title: string;
-  id: string;
 }
-const ShowDetails = ({ title, id }: headerTypes) => {
+const ShowDetails = ({ title }: headerTypes) => {
+  const [sidebarHidden, setSidebarHidden] = useState(false);
   return (
     <div
       style={{
@@ -17,9 +17,8 @@ const ShowDetails = ({ title, id }: headerTypes) => {
       }}
     >
       {/* sidebar */}
-      <div>
-        <Sidebar />
-      </div>
+
+      {sidebarHidden === false && <Sidebar />}
 
       {/* header */}
       <div
@@ -29,9 +28,13 @@ const ShowDetails = ({ title, id }: headerTypes) => {
           margin: "0 auto",
           scrollbarWidth: "none",
         }}
-        className="bg-gray-50 "
+        className="bg-gray-50 smoothly-transparent scroll-smooth"
       >
-        <Header title={"Task"} />
+        <Header
+          sidebarHidden={sidebarHidden}
+          setSidebarHidden={setSidebarHidden}
+          title={"Task"}
+        />
 
         <ContentShow />
       </div>

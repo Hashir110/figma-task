@@ -128,7 +128,7 @@ const ContentUpdate = ({ btnTitle = "Update Task" }) => {
               label="Due Date"
               variant="outlined"
               value={startDate ? startDate.toLocaleDateString() : ""}
-              onClick={() => setShowCalendar(true)} // Opens the calendar
+              onClick={() => setShowCalendar(true)}
               InputProps={{
                 endAdornment: (
                   <InputAdornment position="end">
@@ -146,10 +146,10 @@ const ContentUpdate = ({ btnTitle = "Update Task" }) => {
                   selected={startDate}
                   onChange={(date) => {
                     setStartDate(date);
-                    setShowCalendar(false); // Close the calendar after selecting a date
+                    setShowCalendar(false);
                   }}
                   inline
-                  minDate={new Date()} // Ensures past dates are disabled
+                  minDate={new Date()}
                 />
               </div>
             )}

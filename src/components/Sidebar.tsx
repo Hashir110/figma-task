@@ -1,10 +1,19 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import logo from "../assets/Logo.svg";
 import sideBarLogo from "../assets/Side Menu.svg";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const Sidebar = () => {
+  useEffect(() => {
+    AOS.init();
+  }, []);
   return (
-    <div id="sidebar">
+    <div
+      data-aos="fade-right"
+      data-aos-offset="100"
+      data-aos-easing="ease-in-sine"
+    >
       <div className="bg-white drop-shadow-md px-4 sm:px-6 py-5 w-full sm:w-64 lg:w-72 h-screen max-h-screen">
         {/* Logo */}
         <div className="flex justify-center sm:justify-start">
