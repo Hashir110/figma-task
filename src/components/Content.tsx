@@ -99,10 +99,7 @@ const Content = ({ btnTitle }) => {
   });
 
   return (
-    <div
-      id="content"
-      className="bg-white border border-gray-200 rounded-md m-4 md:m-10"
-    >
+    <div className="bg-white border border-gray-200 rounded-md m-4 md:m-10">
       <body>
         {/* Alert Message */}
         {alertMessage && (

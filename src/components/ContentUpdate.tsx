@@ -50,7 +50,7 @@ const ContentUpdate = ({ btnTitle = "Update Task" }) => {
         { abortEarly: false }
       );
 
-      const formattedDate = startDate.toISOString().split("T")[0];
+      const formattedDate = startDate?.toISOString().split("T")[0];
 
       const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
       if (index !== undefined) {
@@ -139,7 +139,7 @@ const ContentUpdate = ({ btnTitle = "Update Task" }) => {
                     setShowCalendar(false);
                   }}
                   inline
-                  minDate={new Date()}
+                  dateFormat="MM/DD/YYYY"
                 />
               </div>
             )}

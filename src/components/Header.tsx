@@ -5,6 +5,9 @@ interface headerTypes {
   title: string;
   sidebarHidden?: boolean;
   setSidebarHidden?: any;
+  // isMobileOpen?: boolean;
+  // setIsMobileOpen?: any;
+
 }
 
 const Header = ({ title, setSidebarHidden, sidebarHidden }: headerTypes) => {
@@ -12,6 +15,7 @@ const Header = ({ title, setSidebarHidden, sidebarHidden }: headerTypes) => {
 
   const handleMenuClick = () => {
     setSidebarHidden(!sidebarHidden);
+    // setIsMobileOpen ? !isMobileOpen : setIsMobileOpen(false);
   };
 
   return (
@@ -22,7 +26,7 @@ const Header = ({ title, setSidebarHidden, sidebarHidden }: headerTypes) => {
           onClick={handleMenuClick}
         ></i>
 
-        <h3 className="hidden sm:block text-xl sm:text-2xl font-semibold text-slate-700 flex-grow">
+        <h3 className="hidden sm:block text-xl sm:text-2xl  md:text-3xl font-semibold text-slate-700 flex-grow">
           {title}
         </h3>
 

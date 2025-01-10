@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import * as yup from "yup";
 import { Alert } from "@mui/material";
 import WavingHandIcon from "@mui/icons-material/WavingHand";
-const SignIn = () => {
+const SignUp = () => {
   const [fullname, setFullName] = useState("");
   const [role, setRole] = useState("");
   const [password, setPassword] = useState("");
@@ -281,7 +281,7 @@ const SignIn = () => {
             onClick={() => navigate("/")}
             className="text-blue-600 hover:underline"
           >
-            Sign in
+            Login
           </a>
         </p>
       </div>
@@ -289,4 +289,4 @@ const SignIn = () => {
   );
 };
 
-export default SignIn;
+export default SignUp;

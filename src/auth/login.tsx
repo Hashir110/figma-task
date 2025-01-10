@@ -6,7 +6,7 @@ import "boxicons";
 import { Alert } from "@mui/material";
 import WavingHandIcon from "@mui/icons-material/WavingHand";
 
-const SignUp = () => {
+const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordVisible, setPasswordVisible] = useState(false);
@@ -107,7 +107,7 @@ const SignUp = () => {
         </a>
 
         <h2 className="text-gray-800 text-2xl font-semibold mb-6">
-          Welcome to Taska <WavingHandIcon className="text-yellow-300"/>
+          Welcome to Taska <WavingHandIcon className="text-yellow-300" />
         </h2>
 
         {/* Alert Message */}
@@ -170,7 +170,7 @@ const SignUp = () => {
           Don't have an account?{" "}
           <a
             href="#"
-            onClick={() => navigate("/signin")}
+            onClick={() => navigate("/signup")}
             className="text-blue-600 hover:underline"
           >
             Sign Up
@@ -181,4 +181,4 @@ const SignUp = () => {
   );
 };
 
-export default SignUp;
+export default Login;

@@ -8,6 +8,7 @@ import Sidebar from "../components/Sidebar";
 
 export const CreateDetails = () => {
   const [sidebarHidden, setSidebarHidden] = useState(false);
+  // const [isMobileOpen, setIsMobileOpen] = useState(true);
 
   return (
     <div
@@ -18,7 +19,7 @@ export const CreateDetails = () => {
     >
       {/* sidebar */}
 
-      {sidebarHidden === false && <Sidebar />}
+      {sidebarHidden === false &&  <Sidebar />}
 
       {/* header */}
       <div
@@ -32,6 +33,8 @@ export const CreateDetails = () => {
         <Header
           sidebarHidden={sidebarHidden}
           setSidebarHidden={setSidebarHidden}
+          // isMobileOpen={isMobileOpen}
+          // setIsMobileOpen={setIsMobileOpen}
           title={"Create New Task"}
         />
 
